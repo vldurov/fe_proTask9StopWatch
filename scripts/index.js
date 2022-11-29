@@ -137,6 +137,7 @@ https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2018-12/2018091
 https://nnst1.gismeteo.ru/images/2020/07/shutterstock_1450308851-640x360.jpg
 */
 
+//створюю обєкт з картинками
 const img = {
     1: "https://hi-news.ru/wp-content/uploads/2020/10/best_planets_image_one-750x456.jpg",
     2: "https://universetoday.ru/wp-content/uploads/2018/10/Mercury.jpg",
@@ -145,6 +146,7 @@ const img = {
     5: "https://nnst1.gismeteo.ru/images/2020/07/shutterstock_1450308851-640x360.jpg"
 };
 
+//створюю дів в яку додаю тег з картинками та додаю все на сторінку
 let imgForSlider;
 const div4 = document.createElement("div");
 const img1 = document.createElement("img");
@@ -153,12 +155,14 @@ div4.className = "slider"
 document.body.append(div4);
 div4.append(img1);
 
+//створюю змінну яка буде містити кожен раз нову картинку
 let i = 2;
 let sliderImg = function (){
     img1.src = img[i];
     i++;
+    //не розібрався як виявити кількість елементів в обєкті, тому задав в ручну
     if(i >= 5){
         i = 1;
     }
-}
+}   
 setInterval(sliderImg, 3000);
