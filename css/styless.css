@@ -54,3 +54,10 @@
 .stopwatch-control button:nth-child(2){
     margin: 0 .5rem;
 }
+.valid{
+    display: inline-grid;
+}
+.slider img{
+    width: 21rem;
+    height: 100%;
+}

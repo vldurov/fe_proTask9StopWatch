@@ -94,3 +94,71 @@ https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte0b1841d1c4c4f69
  якщо буде помилка, відобразіть її в діві до input.
 */
 
+//створюю змінну для створення дів в якому буде інпут
+const div2 = document.createElement("div");
+//створюю дів - дадою до нього клас та текст в середину
+div2.className = "valid";
+div2.innerHTML = "Введіть номер телефону у форматі 000-000-00-00";
+//додаю дів до сторінки
+document.body.append(div2);
+//точно за таким же принципом створюю інпут та кнопку і додаю в середину дів
+const txt = document.createElement("input");
+txt.type = "text";
+const btn = document.createElement("button");
+btn.className = "btnSaveNumb"
+btn.innerHTML = "Зберегти";
+div2.append(txt, btn);
+
+//створюю змінну в якій буде шаблон для перевірки номеру
+const textValid = /\d\d\d-\d\d\d-\d\d-\d\d/;
+
+let rez;
+//задаю дію кнопці "зберегти" яка буде перевіряти валідність введеного номеру
+document.body.querySelector(".btnSaveNumb").onclick = function () {
+    rez = document.body.querySelector("input").value;
+    //якщо номер введено вірно переходимо за лінком, якщо ні - відображаю помилку
+    if(textValid.test(rez)){
+        location.href = "https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte0b1841d1c4c4f69/622130b6c56d222d0cb0cb8c/ukraine-sunflower-blog-1680x980.png";
+    }else{
+        let div3 = document.createElement("div");
+        div3.style.color = "red";
+        div3.innerHTML = "Телефон введено не вірно!!!";
+        div2.prepend(div3);
+    };
+};
+
+/*
+Створіть слайдер кожні 3 сек змінюватиме зображення
+Зображення для відображення
+https://hi-news.ru/wp-content/uploads/2020/10/best_planets_image_one-750x456.jpg
+https://universetoday.ru/wp-content/uploads/2018/10/Mercury.jpg
+https://hi-news.ru/wp-content/uploads/2020/10/best_planets_image_four-750x430.jpg
+https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2018-12/20180913_zaa_p138_057.jpg
+https://nnst1.gismeteo.ru/images/2020/07/shutterstock_1450308851-640x360.jpg
+*/
+
+const img = {
+    1: "https://hi-news.ru/wp-content/uploads/2020/10/best_planets_image_one-750x456.jpg",
+    2: "https://universetoday.ru/wp-content/uploads/2018/10/Mercury.jpg",
+    3: "https://hi-news.ru/wp-content/uploads/2020/10/best_planets_image_four-750x430.jpg",
+    4: "https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2018-12/20180913_zaa_p138_057.jpg",
+    5: "https://nnst1.gismeteo.ru/images/2020/07/shutterstock_1450308851-640x360.jpg"
+};
+
+let imgForSlider;
+const div4 = document.createElement("div");
+const img1 = document.createElement("img");
+img1.src = img[1];
+div4.className = "slider"
+document.body.append(div4);
+div4.append(img1);
+
+let i = 2;
+let sliderImg = function (){
+    img1.src = img[i];
+    i++;
+    if(i >= 5){
+        i = 1;
+    }
+}
+setInterval(sliderImg, 3000);
